@@ -89,10 +89,14 @@ class SentencePredictionTask(FairseqTask):
 
     @classmethod
     def setup_task(cls, args, **kwargs):
+
+        s = "enter setup task!"
+        logger.info('[setup task]: {}'.format(s))
+
         assert args.num_classes > 0, 'Must set --num-classes'
-        
+
         print(args)
-        
+
         # load data dictionary
         data_dict = cls.load_dictionary(
             args,
