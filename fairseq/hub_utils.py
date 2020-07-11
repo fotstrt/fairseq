@@ -29,6 +29,10 @@ def from_pretrained(
 ):
     from fairseq import checkpoint_utils, file_utils
 
+
+    logger.info('[hub utils data name:] {}'.format(data_name_or_path))
+
+
     if archive_map is not None:
         if model_name_or_path in archive_map:
             model_name_or_path = archive_map[model_name_or_path]
@@ -56,6 +60,9 @@ def from_pretrained(
         kwargs['data'] = os.path.abspath(os.path.join(model_path, data_name_or_path))
     else:
         kwargs['data'] = file_utils.load_archive_file(data_name_or_path)
+
+    logger.info('[hub utils kwargs[data]:] {}'.format(kwargs['data']))
+
     for file, arg in {
         'code': 'bpe_codes',
         'bpecodes': 'bpe_codes',

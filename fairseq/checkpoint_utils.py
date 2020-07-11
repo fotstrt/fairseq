@@ -203,6 +203,9 @@ def load_model_ensemble_and_task(filenames, arg_overrides=None, task=None, stric
         state = load_checkpoint_to_cpu(filename, arg_overrides)
 
         args = state["args"]
+
+        logger.info('[load_model_ensemble_and_task[data]:] {}'.format(args.data))
+
         if task is None:
             task = tasks.setup_task(args)
 
