@@ -91,12 +91,12 @@ class SentencePredictionTask(FairseqTask):
     def setup_task(cls, args, **kwargs):
         assert args.num_classes > 0, 'Must set --num-classes'
 
-        logger.info('[input] data path: {}'.format(len(kwargs['data'])))
+        logger.info('[args]: {}'.format(len(args)))
         
         # load data dictionary
         data_dict = cls.load_dictionary(
             args,
-            os.path.join(kwargs['data'], 'input0', 'dict.txt'),
+            os.path.join(args.data, 'input0', 'dict.txt'),
             source=True,
         )
         logger.info('[input] dictionary: {} types'.format(len(data_dict)))
